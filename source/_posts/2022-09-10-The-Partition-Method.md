@@ -5,6 +5,7 @@ tags:
 - Javascript
 categories: 
 - Tech
+cover: /img/partition-bg.jpg
 ---
 
 I went down a rabbit hole and found this method that had been hiding in plain sight. Partitioning a list  
