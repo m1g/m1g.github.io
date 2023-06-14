@@ -1,10 +1,10 @@
 ---
-title: The Windows Laptop
-date: 2022-09-10 19:55:00
+title: My Windows-First Mindset 
+date: 2022-09-17 19:55:00
 tags:
-- Hardware
+- Lifestyle
 categories: 
-- Personal
+- Tech
 cover: /img/windows-img.jpg
 ---
 

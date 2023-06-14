@@ -1,10 +1,10 @@
 ---
-title: The Partition Method
+title: Using The Partition Method
 date: 2022-09-10 19:31:55
 tags:
 - Javascript
 categories: 
-- Tech
+- ["Tech", "Work"]
 cover: /img/partition-bg.jpg
 ---
 
