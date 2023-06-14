@@ -13,8 +13,6 @@
     
 
     
-        <meta name="description" content="I went down a rabbit hole and found this method that had been hiding in plain sight. Partitioning a list"/>
-    
 
     <!--Author-->
     
@@ -23,12 +21,10 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="The Partition Method"/>
+        <meta property="og:title" content="Code."/>
     
 
     <!--Open Graph Description-->
-    
-        <meta property="og:description" content="I went down a rabbit hole and found this method that had been hiding in plain sight. Partitioning a list"/>
     
 
     <!--Open Graph Site Name-->
@@ -36,7 +32,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="article"/>
+        <meta property="og:type" content="website"/>
     
 
     <!--Page Cover-->
@@ -57,7 +53,7 @@
 
     <!-- Title -->
     
-    <title>The Partition Method - Code.</title>
+    <title>Work - Code.</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
@@ -161,98 +157,49 @@
 </nav>
 
     <!-- Main Content -->
-    <!-- Page Header -->
-<!-- Set your background image for this header in your post front-matter: cover -->
+    
 
-<header class="intro-header" style="background-image: url('/img/partition-bg.jpg')">
+<!-- Page Header -->
+<!-- Set your background image for this header in the theme's configuration: index_cover -->
+<header class="intro-header" style="background-image: url('/img/home-bg.jpg')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="post-heading">
-                    <h1>The Partition Method</h1>
-                    
-                    <span class="meta">
-                        <!-- Date and Author -->
-                        
-                        
-                            2022-09-10
-                        
-                    </span>
+                <div class="site-heading">
+                    <h1>Work</h1>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
-<!-- Post Content -->
-<article>
-    <div class="container">
-        <div class="row">
-
-            <!-- Tags and categories -->
-           
-                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
-                    
-                        
-
-
-<a href="/tags/Javascript/">#Javascript</a>
-
-
-                    
-                </div>
-                <div class="col-lg-4 col-md-5 post-categories">
-                    
-                        
-
-<a href="/categories/Tech/">Tech</a>
-
-                    
-                </div>
+<!-- Main Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             
-
-            <!-- Gallery -->
+                <div class="post-preview">
+    <a href="/2022/09/10/Using-The-Partition-Method/">
+        <h1 class="post-title archive">
+            Using The Partition Method
+        </h1>
+    </a>
+    <p class="post-meta archive">
+        <!-- Date and Author -->
+        
+        2022-09-10
+    </p>
+</div>
             
-
-            <!-- Post Main Content -->
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <p>I went down a rabbit hole and found this method that had been hiding in plain sight. Partitioning a list  </p>
- <span id="more"></span>
-
-<hr>
-<h2 id="What-was-the-challenge"><a href="#What-was-the-challenge" class="headerlink" title="What was the challenge?"></a>What was the challenge?</h2><p>I’d been looking for a way to separate a list of emails into two buckets, valid and invalid, so that I could log out the invalid emails and present that to the user. It’d already been a challenge because I’m working in Rails, but that just meant that I’m going to have to add some javascripty looking ruby code 😈</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># the heavy-handed operation I wrote looked something like this</span></span><br><span class="line">valid = []</span><br><span class="line">invalid = []</span><br><span class="line"></span><br><span class="line">valid = emails.map &#123;|<span class="params">email</span>| validator.is_valid(email)&#125;</span><br><span class="line">invalid = emails.map &#123;|<span class="params">email</span>| !email.is_valid(email)&#125;</span><br></pre></td></tr></table></figure>
-
-<p>But lo - and as I’d hoped, a patron saint of code feedback teammate of mine came through with some constructive feedback that <del>I could have used a year ago</del> changed everything.</p>
-<h2 id="What-was-‘the-way’"><a href="#What-was-‘the-way’" class="headerlink" title="What was ‘the way’?"></a>What was <a target="_blank" rel="noopener" href="https://i.imgur.com/Fk69QjI.gif">‘the way’</a>?</h2><p>Enter ruby’s built-in partition method. It returns two arrays - the first containing the elements that return true and the second returns the rest 🔥 It made my day and now my method looks like: </p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">valid, invalid = emails.partition &#123;|<span class="params">email</span>| validator.is_valid(email)&#125;</span><br></pre></td></tr></table></figure>
-
-<p>So the next logical step is to ask myself, “does javascript have this?”</p>
-<h2 id="Well-does-Javascript-have-it"><a href="#Well-does-Javascript-have-it" class="headerlink" title="Well, does Javascript have it?"></a>Well, does Javascript have it?</h2><p>The answer as of June in the year of our Lord 2021, is… <strong>not out of the box</strong>. But fortunately for me, our project is using lodash and sure enough, <code>_.partition</code> exists! <a target="_blank" rel="noopener" href="https://lodash.com/docs/#partition">Lodash partition</a> behaves similar to the built-in ruby version, but with a slightly different syntax:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// syntax</span></span><br><span class="line">_.<span class="title function_">partition</span>(collection, predicate)</span><br></pre></td></tr></table></figure>
-<p>It accepts two parameters. The <strong>collection</strong> to iterate over and the <strong>predicate</strong> which is the function to be invoked per iteration. Then it returns an array of grouped elements:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// example from above where &#x27;emailValidator&#x27; returns a bool</span></span><br><span class="line"><span class="keyword">let</span> [ valid, invalid ] = _.<span class="title function_">partition</span>(emails, <span class="title function_">emailValidator</span>(email))</span><br></pre></td></tr></table></figure>
-
-<p><em>Just to note, I’m destructuring the arrays into separate buckets here for the purposes of my example.</em> </p>
-<p>And that’s it! I’ve found a new tool to add to the toolbox, that I look forward to using much more of in the future.</p>
-<!-- LINKS -->
-
-
-
-                
-            </div>
-
-            <!-- Comments -->
-            
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    
-
-
-                </div>
-            
+            <div class="archive-before-pagination"></div>
+            <ul class="pager">
+    
+    
+</ul>
         </div>
     </div>
-</article>
+</div>
+
 
     <!-- Footer -->
     <hr />
@@ -265,7 +212,7 @@
                 <ul class="list-inline text-center">
                     
                         <li>
-                            <a href="https://twiiter.com/miguelmalcolm" target="_blank">
+                            <a href="https://twitter.com/miguelmalcolm" target="_blank">
                                 <span class="fa-stack fa-lg">
                                     <i class="fa fa-circle fa-stack-2x"></i>
                                     <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
@@ -302,7 +249,7 @@
 
                     
                 </ul>
-                <p class="copyright text-muted">&copy; 2022 Miguel Malcolm<br></p>
+                <p class="copyright text-muted">&copy; 2023 Miguel Malcolm<br></p>
                 <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
                 <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
             </div>
